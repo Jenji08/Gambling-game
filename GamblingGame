@@ -1,0 +1,244 @@
+bool play = true;
+string playagain = "";
+double money = 1000;
+
+
+
+while (play)
+   
+{
+    
+       
+   
+    double newmoney = 0;
+    if (newmoney > 0)
+    {
+        money = money + newmoney;
+    }
+Console.WriteLine("Welcome to the gambling game");
+
+
+string error = ("ERROR 120, Invalid num");
+bool win = false;
+bool lose = false;
+
+if (win == true)
+{
+    Console.ForegroundColor = ConsoleColor.Blue;
+    Console.WriteLine($"You beat the game with ${money}");
+    Console.ForegroundColor = ConsoleColor.White;
+}
+
+if (lose == true)
+{
+    Console.ForegroundColor = ConsoleColor.DarkRed;
+    Console.WriteLine("You went bankrupt and lost the kids too...");
+    Console.ForegroundColor = ConsoleColor.White;
+}
+
+if (money > 10000)
+    {
+        win = true;
+    }
+    
+        
+    
+
+Console.ForegroundColor = ConsoleColor.Magenta;
+Console.WriteLine($"Balance - {money}");
+Console.ForegroundColor = ConsoleColor.White; 
+Console.WriteLine("Pick a mode");
+string[] games = {"Blackjack", "Coinflip", "Dice"};
+Array.ForEach(games, Console.WriteLine);
+string gameinput = Console.ReadLine();
+    
+
+    switch (gameinput)
+    {
+        case "Dice":
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.WriteLine("Dice...");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine("How much money?");
+            double moneygetrid = Convert.ToDouble(Console.ReadLine());
+                if (moneygetrid > money)
+                {
+                    Console.WriteLine("ERROR, invalid number");
+                    Console.WriteLine("Idk how to code this so it returns so have fun...");
+                    //i learned how to code it but im still keeping this in, its just return; but i still dont understand how it works it just does ig
+                    Console.ReadLine();
+                    while (moneygetrid > money)
+                    {
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine("ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR");
+                        Console.ForegroundColor = ConsoleColor.White;
+
+                    }
+                }
+                Console.WriteLine("pick a number between 1-6");
+                int playerNum = Convert.ToInt32(Console.ReadLine());
+                Random random = new Random();
+                int diceroll = random.Next(1, 7);
+                
+
+                if (playerNum > 7)
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine(error);
+                    Console.ForegroundColor = ConsoleColor.White;
+                    return;
+                }
+
+                if (playerNum < 0)
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine(error);
+                    Console.ForegroundColor = ConsoleColor.White;
+                    return;
+                }
+
+            if (diceroll == playerNum)
+            {
+               
+                double winmoney = moneygetrid;
+                Console.WriteLine($"You won ${winmoney}");
+                money = money - money + money + winmoney;
+                Console.ForegroundColor = ConsoleColor.Magenta;
+                Console.WriteLine($"Balance = {money}");
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.WriteLine("Play again?");
+                playagain = Console.ReadLine();
+                
+            }
+
+
+            if (diceroll != playerNum)
+                {
+                money = money - moneygetrid;
+                double losemoney = moneygetrid;
+                    Console.WriteLine($"You lost ${losemoney}");
+                  newmoney = money - losemoney;
+                    Console.ForegroundColor = ConsoleColor.Magenta;
+                    Console.WriteLine($"Balance = {money}");
+                    Console.ForegroundColor = ConsoleColor.White;
+                    Console.WriteLine("Play again?");
+                    playagain = Console.ReadLine();
+
+                }
+            
+            if (playagain == "yes")
+            {
+                play = true;
+            }
+            
+            else
+            {
+                play = false;
+            }
+            
+
+            
+
+
+
+            
+
+            
+            break;
+
+        case "Coinflip":
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.WriteLine("Coinflip...");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine("How much money?");
+            double moneygetridflip = Convert.ToDouble(Console.ReadLine());
+            if (moneygetridflip > money)
+            {
+                Console.WriteLine("ERROR, invalid number");
+                Console.WriteLine("Idk how to code this so it returns so have fun...");
+                //i learned how to code it but im still keeping this in, its just return; but i still dont understand how it works it just does ig
+                Console.ReadLine();
+                while (moneygetridflip > money)
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR");
+                    Console.ForegroundColor = ConsoleColor.White;
+
+                }
+            }
+            Console.WriteLine("pick side, 1 for heads, 2 for tails");
+            int coinflip = Convert.ToInt32(Console.ReadLine());
+            Random random2 = new Random();
+            int flip = random2.Next(1, 3);
+
+
+            if (coinflip > 2)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine(error);
+                Console.ForegroundColor = ConsoleColor.White;
+                return;
+            }
+
+            if (coinflip < 1)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine(error);
+                Console.ForegroundColor = ConsoleColor.White;
+                return;
+            }
+
+            if (flip == coinflip)
+            {
+
+                double winmoney = moneygetridflip;
+                Console.WriteLine($"You won ${winmoney}");
+                money = money - money + money + winmoney;
+                Console.ForegroundColor = ConsoleColor.Magenta;
+                Console.WriteLine($"Balance = {money}");
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.WriteLine("Play again?");
+                playagain = Console.ReadLine();
+
+            }
+
+
+            if (flip != coinflip)
+            {
+                money = money - moneygetridflip;
+                double losemoney = moneygetridflip;
+                Console.WriteLine($"You lost ${losemoney}");
+                newmoney = money - losemoney;
+                Console.ForegroundColor = ConsoleColor.Magenta;
+                Console.WriteLine($"Balance = {money}");
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.WriteLine("Play again?");
+                playagain = Console.ReadLine();
+
+            }
+
+            if (playagain == "yes")
+            {
+                play = true;
+            }
+
+            else
+            {
+                play = false;
+            }
+            break;
+
+        case "Blackjack":
+
+            break;
+
+
+    }
+
+    
+}
+
+if (play = false)
+{
+    return;
+}
